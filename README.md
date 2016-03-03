@@ -67,6 +67,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonFacebookConnect: UIButton!
 
     private let disposeBag = DisposeBag()
+    private let loginProvider = LoginProvider()
 
     private lazy var observerGoogle: Observable<Provider>! = {
         self.buttonGoogleConnect.rx_tap.map {
