@@ -97,3 +97,25 @@ class ViewController: UIViewController {
     }
 }
 ```
+
+#AppDelegate
+
+In some case you will need to route several URLS from the **AppDelegate**, for example with **Facebook** and **Google**.
+One way to do deal with that :
+
+```swift
+func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+  if url.scheme.rangeOfString("com.googleusercontent") != nil {
+    //Google here :
+    let options: [String: AnyObject] = [UIApplicationOpenURLOptionsSourceApplicationKey: sourceApplication!, UIApplicationOpenURLOptionsAnnotationKey: annotation]
+            
+    return GIDSignIn.sharedInstance().handleURL(url,
+      sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String,
+      annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+  }
+  else {
+    //Facebook here :
+    return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+  }
+}
+```
