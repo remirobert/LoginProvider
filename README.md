@@ -1,6 +1,14 @@
 # LoginProvider
 **LoginProvider** is a sample tool to add login with tiers service (as Facebook, Google, or Twitter), using **RxSwift**.
 
+
+              |  CameraEngine
+--------------------------|------------------------------------------------------------
+:star2: | RxSwift implementation
+:star2: | Modulable, and easy to extend
+F | Facebook integration
+G | Google+ integration
+
 #How to create a LoginProvider
 
 Following to the **protocol**, you can create your own Provider.
